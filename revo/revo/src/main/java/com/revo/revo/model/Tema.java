@@ -27,7 +27,7 @@ public class Tema {
 	@Size(max = 500)
 	private String descricao;
 	
-	
+	//TESTE PARA O EMERSON
 	private boolean status = true;
 
 	//GETTERS E SETTERS
