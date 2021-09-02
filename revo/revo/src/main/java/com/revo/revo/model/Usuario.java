@@ -9,31 +9,38 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.validation.constraints.*;
 
 @Entity
-@Table(name = "tb_tema")
-public class Tema {
+@Table(name = "tb_usuario")
+public class Usuario {
 	//ATRIBUTOS ------------------------------------------------------------
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
-	@NotBlank
-	@Size(max = 100)
-	private String tipo;
 	
 	@NotBlank
-	@Size(max = 500)
-	private String descricao;
+	@Size(min = 5, max = 200)
+	private String nome;
 	
-	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("tema")
+	@Email
+	@NotBlank
+	private String email;
+	
+	@NotBlank
+	@Size(min = 6, max = 12)
+	private String senha;
+	
+	@NotBlank
+	private String acesso;
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagem;
 
 	//GETTERS E SETTERS ----------------------------------------------------
@@ -46,20 +53,36 @@ public class Tema {
 		this.id = id;
 	}
 	
-	//TIPO
-	public String getTipo() {
-		return tipo;
+	//NOME
+	public String getNome() {
+		return nome;
 	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-	
-	//DESCRICAO
-	public String getDescricao() {
-		return descricao;
+
+	//EMAIL
+	public String getEmail() {
+		return email;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	//SENHA
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	//ACESSO
+	public String getAcesso() {
+		return acesso;
+	}
+	public void setAcesso(String acesso) {
+		this.acesso = acesso;
 	}
 	
 	//POSTAGEM
