@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "tb_postagem")
 public class Postagem {
+	//ATRIBUTOS ------------------------------------------------------------
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
