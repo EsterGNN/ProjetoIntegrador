@@ -35,10 +35,10 @@ public class Usuario {
 	@Size(min = 8, message = "O atributo senha deve ter no mínimo 8 caracteres")
 	private String senha;
 	
-	// !!!!!PERGUNTAR PRO MARCELO!!!!!
+	/* !!!!!PERGUNTAR PRO MARCELO!!!!!
 	@NotBlank
 	private String acesso;
-	// !!!!!PERGUNTAR PRO MARCELO!!!!!
+	!!!!!PERGUNTAR PRO MARCELO!!!!! */ 
 	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("usuario")
