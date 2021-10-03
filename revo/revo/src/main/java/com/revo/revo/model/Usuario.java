@@ -17,7 +17,7 @@ import javax.validation.constraints.*;
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario {
-	//ATRIBUTOS ------------------------------------------------------------
+	// ATRIBUTOS ------------------------------------------------------------
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -35,18 +35,17 @@ public class Usuario {
 	@Size(min = 8, message = "O atributo senha deve ter no mínimo 8 caracteres")
 	private String senha;
 	
-	// !!!!!PERGUNTAR PRO MARCELO!!!!!
-	@NotBlank
-	private String acesso;
-	// !!!!!PERGUNTAR PRO MARCELO!!!!!
+	private String foto;
 	
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	private String tipo;
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagem;
 
-	//GETTERS E SETTERS ----------------------------------------------------
+	// GETTERS E SETTERS ----------------------------------------------------
 	
-	//ID
+	// ID
 	public long getId() {
 		return id;
 	}
@@ -54,7 +53,7 @@ public class Usuario {
 		this.id = id;
 	}
 	
-	//NOME
+	// NOME
 	public String getNome() {
 		return nome;
 	}
@@ -62,7 +61,7 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	//EMAIL
+	// EMAIL
 	public String getUsuario() {
 		return usuario;
 	}
@@ -70,7 +69,7 @@ public class Usuario {
 		this.usuario = usuario;
 	}
 
-	//SENHA
+	// SENHA
 	public String getSenha() {
 		return senha;
 	}
@@ -78,15 +77,23 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	//ACESSO
-	public String getAcesso() {
-		return acesso;
+	// FOTO
+	public String getFoto() {
+		return foto;
 	}
-	public void setAcesso(String acesso) {
-		this.acesso = acesso;
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 	
-	//POSTAGEM
+	// TIPO
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
+	// POSTAGEM
 	public List<Postagem> getPostagem() {
 		return postagem;
 	}
