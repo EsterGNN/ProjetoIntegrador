@@ -23,10 +23,6 @@ public class Tema {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
-	@NotBlank
-	@Size(max = 100)
-	private String tipo;
 	
 	@NotBlank
 	@Size(max = 500)
@@ -44,14 +40,6 @@ public class Tema {
 	}
 	public void setId(long id) {
 		this.id = id;
-	}
-	
-	//TIPO
-	public String getTipo() {
-		return tipo;
-	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
 	}
 	
 	//DESCRICAO

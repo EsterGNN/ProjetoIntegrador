@@ -42,6 +42,10 @@ public class Usuario {
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagem;
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("usuario")
+	private List<Inscricao> inscricao;
 
 	// GETTERS E SETTERS ----------------------------------------------------
 	
@@ -101,4 +105,11 @@ public class Usuario {
 		this.postagem = postagem;
 	}
 	
+	//INSCRICAO
+	public List<Inscricao> getInscricao() {
+		return inscricao;
+	}
+	public void setInscricao(List<Inscricao> inscricao) {
+		this.inscricao = inscricao;
+	}
 }

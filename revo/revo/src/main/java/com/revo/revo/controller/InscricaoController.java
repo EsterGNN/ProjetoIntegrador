@@ -1,10 +1,7 @@
 package com.revo.revo.controller;
 
-import com.revo.revo.repository.TemaRepository;
-
 import java.util.List;
 
-import com.revo.revo.model.Tema;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,51 +15,48 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revo.revo.model.Inscricao;
+import com.revo.revo.repository.InscricaoRepository;
+
 @RestController
-@RequestMapping("/tema")
+@RequestMapping("/inscricao")
 @CrossOrigin(value = "*", allowedHeaders = "*")
-public class TemaController {
+public class InscricaoController {
 	//REPOSITORY
 	@Autowired
-	private TemaRepository repository;
+	private InscricaoRepository repository;
 	
 	//FIND ALL
 	@GetMapping
-	public ResponseEntity<List<Tema>> findAll(){
+	public ResponseEntity<List<Inscricao>> findAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	//FIND BY ID
 	@GetMapping("/{id}")
-	public ResponseEntity<Tema> findById(@PathVariable long id){
+	public ResponseEntity<Inscricao> findById(@PathVariable long id){
 		return repository.findById(id)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	//FIND BY DESCRICAO
-	@GetMapping("/descricao/{descricao}")
-	public ResponseEntity<List<Tema>> findAllByDescricao(@PathVariable String descricao){
-		return ResponseEntity.ok(repository
-				.findAllByDescricaoContainingIgnoreCase(descricao));
-	}
-	
 	//POST
 	@PostMapping
-	public ResponseEntity<Tema> postTema(@RequestBody Tema tema){
+	public ResponseEntity<Inscricao> postInscricao(@RequestBody Inscricao inscricao){
 		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(repository.save(tema));
+				.body(repository.save(inscricao));
 	}
-	
+		
 	//PUT
 	@PutMapping
-	public ResponseEntity<Tema> putTema(@RequestBody Tema tema){
-		return ResponseEntity.ok(repository.save(tema));
+	public ResponseEntity<Inscricao> putInscricao(@RequestBody Inscricao inscricao){
+		return ResponseEntity.ok(repository.save(inscricao));
 	}
-	
+		
 	//DELETE
 	@DeleteMapping("/{id}")
-	public void deleteTema(@PathVariable long id) {
+	public void deleteInscricao(@PathVariable long id) {
 		repository.deleteById(id);
 	}
+	
 }
